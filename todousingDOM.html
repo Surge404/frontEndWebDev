@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <script>
+        let childId = 1;
+function setAsDone(id){
+const fuf = document.getElementById(id);
+fuf.children[2].innerHTML="Done!!!";
+}
+function createChild(task, description, childId){
+const p1 = document.createElement("div");
+const pp1 = document.createElement("div");
+const pp2 = document.createElement("div");
+const pp3 = document.createElement("button");
+p1.id=`${childId}`;
+pp1.innerHTML=task.value;
+pp2.innerHTML=description.value;
+pp3.innerHTML="MarkAsDone";
+pp3.onclick = function () {
+        setAsDone(childId);
+    };
+p1.appendChild(pp1);
+p1.appendChild(pp2);
+p1.appendChild(pp3);
+return p1;
+}
+        function addtask(){
+            const child1 = document.getElementById("task").value;
+            const child2 = document.getElementById("description").value;
+            const container =document.getElementById("container");
+            container.appendChild(createChild(task, description, childId++));
+        }
+     </script>
+    <input type="text" id="task" placeholder="task"><br><br>
+    <input type="text" id="description" placeholder="description"><br><br>
+    <button id="button" onclick="addtask()">Add task</button><br><br>
+    <div id="container"></div>
+</body>
+</html>
